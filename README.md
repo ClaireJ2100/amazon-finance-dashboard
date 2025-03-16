@@ -42,5 +42,5 @@ Before running the app, you need to intall necessary packeages:
 Start the app: `shiny::runApp("app.R")`
 
 
-You can view the Shiny app by navigating to the address ``http://127.0.0.1:4938`` in your browser.
+You can view the Shiny app by navigating to the address `http://127.0.0.1:6150` in your browser.
 
