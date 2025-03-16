@@ -25,7 +25,7 @@ To make the financial dashboard more accessible and insightful, this Shiny-power
 In your terminal, please run the following command:
 
 ```bash
-https://github.com/UBC-MDS/DSCI532-Amazon-Finance-Dashboard.git
+https://github.ubc.ca/mds-2024-25/DSCI_532_individual-assignment_zjiang21.git
 ```
 
 2. Environment setup
