@@ -18,6 +18,11 @@ To make the financial dashboard more accessible and insightful, this Shiny-power
 - Growth Rate 📈 -> Track Amazon's growth rate across quaters and years.
 - Dynamic Filtering 🕵 -> Users can explore different time periods (years & quarters) to gain deeper insights.
 
+## Dataset: Amazon Income Statement
+
+The financial data used in this dashboard is sourced from Alpha Vantage, a widely recognized platform that offers real-time and historical market data, stock prices, and company financial statements. The data was retrieved using the Alpha Vantage API and saved locally under the “data/raw” folder.
+
+
 ## App description
 ### Demo Walkthrough
 Watch the full video walkthrough here:  
