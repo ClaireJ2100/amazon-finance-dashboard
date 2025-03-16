@@ -19,6 +19,9 @@ To make the financial dashboard more accessible and insightful, this Shiny-power
 - Dynamic Filtering 🕵 -> Users can explore different time periods (years & quarters) to gain deeper insights.
 
 ## App description
+### Demo Walkthrough
+Watch the full video walkthrough here:  
+[Watch Demo Video](img/demo.mp4)
 
 ## Installation instructions
 1. Clone the git repository from GitHub
