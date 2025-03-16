@@ -85,7 +85,10 @@ ui <- fluidPage(
       plotlyOutput("line_chart"),
       
       # Bar Chart
-      plotlyOutput("bar_chart")
+      plotlyOutput("bar_chart"),
+      
+      # Growth Rate Chart
+      plotlyOutput("growth_chart")
     )
   )
 )
@@ -109,6 +112,8 @@ server <- function(input, output, session) {
       # Keep `fiscalDateEnding` as a valid date
       df$fiscalDateEnding <- as.Date(df$fiscalDateEnding, format = "%Y-%m-%d")
     }
+    
+    df <- df %>% arrange(fiscalDateEnding)
     
     return(df)
   })
@@ -181,29 +186,50 @@ server <- function(input, output, session) {
     if (nrow(df) == 0) return(NULL)  # Prevents errors
     
     df_long <- df %>%
-      select(operatingIncome, netIncome, costOfRevenue, sellingGeneralAndAdministrative, researchAndDevelopment) %>%
+      select(costOfRevenue, sellingGeneralAndAdministrative, researchAndDevelopment) %>%
       summarise_all(sum, na.rm = TRUE) %>%
-      pivot_longer(cols = everything(), names_to = "Category", values_to = "Amount")
+      pivot_longer(cols = everything(), names_to = "Expense Category", values_to = "Amount")
     
-    df_long$Category <- recode(df_long$Category,
-                               "operatingIncome" = "Operating Incone",
-                               "netIncome" = "Net Incone",
-                               "costOfRevenue" = "Cost of Revenue",
-                               "sellingGeneralAndAdministrative" = "Sales & Admin Costs",
-                               "researchAndDevelopment" = "Research And Development Expenses"
+    # Rename categories for better readability
+    df_long$`Expense Category` <- recode(df_long$`Expense Category`,
+                                         "costOfRevenue" = "Cost of Goods Sold",
+                                         "sellingGeneralAndAdministrative" = "Sales & Admin Costs",
+                                         "researchAndDevelopment" = "Research And Development Expenses"
     )
     
-    p <- ggplot(df_long, aes(x = reorder(Category, Amount), y = Amount, fill = Category)) +
+    p <- ggplot(df_long, aes(x = "Total Expenses", y = Amount, fill = `Expense Category`)) +
       geom_col() +
-      scale_y_continuous(labels = scales::comma) +  # improve readability
-      labs(title = "Amazon’s Profit & Expense Breakdown", y = "Amount ($)", x = "") +
+      scale_y_continuous(labels = scales::comma) +  
+      labs(title = "Amazon's Expense Breakdown", y = "Amount ($)", x = "") +
       theme_minimal() +
-      theme(legend.position = "none",
-            axis.text.x = element_text(angle = 45, hjust = 1, size = 14))
+      theme(
+        axis.text.x = element_blank(),
+        legend.title = element_blank())
     
-    ggplotly(p, width = 900, height = 600)
+    ggplotly(p)
     
   })
+
+  output$growth_chart <- renderPlotly({
+    df <- filtered_data()
+    
+    if (nrow(df) < 2) return(NULL)  # Prevent errors when only one period is selected
+    
+    df <- df %>%
+      arrange(fiscalDateEnding) %>%
+      mutate(growthRate = (totalRevenue - lag(totalRevenue)) / lag(totalRevenue) * 100) %>%
+      drop_na()  
+    
+    p <- ggplot(df, aes(x = fiscalDateEnding, y = growthRate)) +
+      geom_line(size = 1.5, color = "blue") +
+      geom_point(size = 3) +
+      scale_y_continuous(labels = scales::percent_format(scale = 1)) +  # Convert to percentage format
+      labs(title = "Revenue Growth Over Time", y = "Growth Rate (%)", x = "Time") +
+      theme_minimal() 
+    
+    ggplotly(p)
+  })
+
 }
 
 shinyApp(ui, server)
