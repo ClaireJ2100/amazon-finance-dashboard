@@ -12,10 +12,11 @@ Amazon is one of the world’s most influential companies, and its financial rep
 To make the financial dashboard more accessible and insightful, this Shiny-powered dashboard provided an interactive visualization of Amazon’s key financial metrics.
 
 ## Key features:
-- Revenue & Net Income Trends 📈 → Track Amazon’s financial growth across quarters and years.
-- Profit and Cost Breakdown 💰 → Visualize Amazon’s operating expenses, and income.
-- Key Metrics 📊 → Gain insights into Total Revenue, Gross Profit, and Operating Income.
-- Dynamic Filtering 🕵️ → Users can explore different time periods (years & quarters) to gain deeper insights.
+- Revenue & Net Income Trends 📈 -> Track Amazon’s financial growth across quarters and years.
+- Profit and Cost Breakdown 💰 -> Visualize Amazon’s operating expenses, and income.
+- Key Metrics 📊 -> Gain insights into Total Revenue, Gross Profit, and Operating Income.
+- Growth Rate 📈 -> Track Amazon's growth rate across quaters and years.
+- Dynamic Filtering 🕵 -> Users can explore different time periods (years & quarters) to gain deeper insights.
 
 ## App description
 
