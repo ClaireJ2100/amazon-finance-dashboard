@@ -28,6 +28,8 @@ The financial data used in this dashboard is sourced from Alpha Vantage, a widel
 Watch the full video walkthrough here:  
 [Watch Demo Video](img/demo.mp4)
 
+**There are two filters, two mode selectors, three cards, two line charts, and one stacked bar chart, which meeet the challenge requirements.**
+
 ## Installation instructions
 1. Clone the git repository from GitHub
 
