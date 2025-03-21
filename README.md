@@ -1,7 +1,3 @@
-# DSCI_532_individual-assignment_zjiang21
-
-DSCI 532 individual-assignment for zhengling jiang (zjiang21)
-
 # Amazon Financial Insights Dashboard
 
 ## Motivation:
@@ -36,7 +32,7 @@ Watch the full video walkthrough here:
 In your terminal, please run the following command:
 
 ```bash
-https://github.ubc.ca/mds-2024-25/DSCI_532_individual-assignment_zjiang21.git
+https://github.com/ClaireJ2100/amazon-finance-dashboard.git
 ```
 
 2. Environment setup
