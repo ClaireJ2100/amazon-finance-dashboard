@@ -20,6 +20,10 @@ The financial data used in this dashboard is sourced from Alpha Vantage, a widel
 
 
 ## App description
+
+### Live Dashboard
+[Click here to view the app](https://0195babc-df20-0298-ff8f-d26e52e0ef0a.share.connect.posit.cloud/)
+
 ### Demo Walkthrough
 Watch the full video walkthrough here:  
 [Watch Demo Video](img/demo.mp4)
